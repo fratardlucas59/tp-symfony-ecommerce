@@ -40,4 +40,13 @@ class ProductRepository extends ServiceEntityRepository
 
     return $queryBuilder->getResult();
   }
+
+  public function best(){
+    $queryBuilder = $this->createQueryBuilder('p')
+      ->where('p.coeur = 1')
+      ->setMaxResults(1)
+      ->getQuery();
+
+    return $queryBuilder->getResult();
+  }
 }

@@ -39,25 +39,32 @@
                     </a>
                 </div>
             </div>
+            {% for bestP in best %}
             <div class="col-12 col-md-3">
                 <div class="card">
                     <div class="card-header bg-success text-white text-uppercase">
                         <i class="fa fa-heart"></i> Coup de coeur
                     </div>
-                    <img class="img-fluid border-0" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+                    {% if bestP.image %}
+                        <img class="img-fluid border-0" src="{{ asset('uploads/' ~ bestP.image) }}" alt="Card image cap">
+                    {% else %}
+                        <img class="img-fluid border-0" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+                    {% endif %}
+
                     <div class="card-body">
-                        <h4 class="card-title text-center"><a href="product.html" title="View Product">Produit</a></h4>
+                        <h4 class="card-title text-center"><a href="{{ path('product_show', { slug: bestP.slug }) }}" title="View Product">{{ bestP.name }}</a></h4>
                         <div class="row">
                             <div class="col">
-                                <p class="btn btn-danger btn-block">99.00 &euro;</p>
+                                <p class="btn btn-danger btn-block">{{ bestP.price / 100 }} &euro;</p>
                             </div>
                             <div class="col">
-                                <a href="product.html" class="btn btn-success btn-block">Voir</a>
+                                <a href="{{ path('product_show', { slug: bestP.slug }) }}" class="btn btn-success btn-block">Voir</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 
@@ -73,13 +80,17 @@
                             {% for lastProduct in lastProducts %}
                             <div class="col-sm">
                                 <div class="card">
-                                    <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+                                    {% if lastProduct.image %}
+                                        <img class="card-img-top" src="{{ asset('uploads/' ~ lastProduct.image) }}" alt="Card image cap">
+                                    {% else %}
+                                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+                                    {% endif %}
                                     <div class="card-body">
-                                        <h4 class="card-title"><a href="product.html" title="View Product">{{ lastProduct.name }}</a></h4>
-                                        <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                                        <h4 class="card-title"><a href="{{ path('product_show', { slug: lastProduct.slug }) }}" title="View Product">{{ lastProduct.name }}</a></h4>
+                                        <p class="card-text">{{ lastProduct.description }}</p>
                                         <div class="row">
                                             <div class="col">
-                                                <p class="btn btn-danger btn-block">99.00 &euro;</p>
+                                                <p class="btn btn-danger btn-block">{{ lastProduct.price / 100}} &euro;</p>
                                             </div>
                                             <div class="col">
                                                 <a href="cart.html" class="btn btn-success btn-block">Ajouter au panier</a>
@@ -108,13 +119,17 @@
                             {% for favoriteP in favoriteProducts %}
                             <div class="col-sm">
                                 <div class="card">
-                                    <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+                                    {% if favoriteP.image %}
+                                        <img class="card-img-top" src="{{ asset('uploads/' ~ favoriteP.image) }}" alt="Card image cap">
+                                    {% else %}
+                                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+                                    {% endif %}
                                     <div class="card-body">
-                                        <h4 class="card-title"><a href="product.html" title="View Product">{{ favoriteP.name }}</a></h4>
-                                        <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                                        <h4 class="card-title"><a href="{{ path('product_show', { slug: favoriteP.slug }) }}" title="View Product">{{ favoriteP.name }}</a></h4>
+                                        <p class="card-text">{{ favoriteP.description }}</p>
                                         <div class="row">
                                             <div class="col">
-                                                <p class="btn btn-danger btn-block">99.00 &euro;</p>
+                                                <p class="btn btn-danger btn-block">{{ favoriteP.price /100 }} &euro;</p>
                                             </div>
                                             <div class="col">
                                                 <a href="cart.html" class="btn btn-success btn-block">Ajouter au panier</a>

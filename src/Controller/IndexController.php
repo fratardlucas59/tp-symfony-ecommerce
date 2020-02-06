@@ -14,14 +14,15 @@ class IndexController extends AbstractController
     public function index(ProductRepository $productRepository)
     {
       $products = $productRepository->lastAdd();
-      dump($products);
 
       $favorite = $productRepository->favorite();
-      dump($favorite);
+
+      $best = $productRepository->best();
 
         return $this->render('index/index.html.twig', [
           'lastProducts' => $products,
           'favoriteProducts' => $favorite,
+          'best' => $best,
         ]);
     }
 
