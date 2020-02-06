@@ -19,10 +19,15 @@ class AppFixtures extends Fixture
   public function load(ObjectManager $manager){
 
     $faker = \Faker\Factory::create('fr_FR');
-
-    $colors=['bleu','rouge','vert'];
+    
     //Créer les produits
     for ($i = 1; $i <= 20; ++$i) {
+      $colors = [];
+      $nb = random_int(1,3);
+      for ($j = 0; $j <= $nb; ++$j){
+        $color = $faker->safeColorName;
+        $colors[] = $color;
+      }
       $color = array_rand($colors);
       $product = new Product();
       $product->setName('Produit '.$i);
