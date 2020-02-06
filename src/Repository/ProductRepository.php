@@ -32,6 +32,15 @@ class ProductRepository extends ServiceEntityRepository
     return $queryBuilder->getResult();
   }
 
+  public function last(){
+    $queryBuilder = $this->createQueryBuilder('p')
+      ->orderBy('p.date','DESC')
+      ->setMaxResults(1)
+      ->getQuery();
+
+    return $queryBuilder->getResult();
+  }
+
   public function favorite(){
     $queryBuilder = $this->createQueryBuilder('p')
       ->where('p.coeur = 1')

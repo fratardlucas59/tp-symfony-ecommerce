@@ -44,9 +44,11 @@
             <div class="col-12 col-lg-6 add_to_cart_block">
                 <div class="card bg-light mb-3">
                     <div class="card-body">
-                        <p class="price">{{ product.price / 100 }} &euro;</p>
                         {% if product.promotion %}
-                            <p class="price_discounted">{{ (product.price / 100) - product.promotion }} &euro;</p>
+                            <p class="price">{{ (product.price / 100) * (1 - product.promotion / 100) }} &euro;</p>
+                            <p class="price_discounted">{{ (product.price / 100) }} &euro;</p>
+                        {% else %}
+                            <p class="price">{{ (product.price / 100) }} &euro;</p>
                         {% endif %}
                         <form method="get" action="cart.html">
                             <div class="form-group">
