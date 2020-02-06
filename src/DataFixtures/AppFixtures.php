@@ -31,7 +31,7 @@ class AppFixtures extends Fixture
       $product->setPrice(rand(10, 1000) * 100);
       $product->setCoeur((bool) $faker->boolean(50));
       $product->setColor($colors);
-      $product->setDate($faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now', $timezone = null));
+      $product->setDate($faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now', $timezone = 'Europe/Paris'));
       $manager->persist($product);
     }
     $manager->flush();

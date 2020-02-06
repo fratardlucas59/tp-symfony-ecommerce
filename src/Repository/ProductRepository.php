@@ -22,4 +22,22 @@ class ProductRepository extends ServiceEntityRepository
 
     return $queryBuilder->getResult();
   }
+
+  public function lastAdd(){
+    $queryBuilder = $this->createQueryBuilder('p')
+      ->orderBy('p.date','DESC')
+      ->setMaxResults(4)
+      ->getQuery();
+
+    return $queryBuilder->getResult();
+  }
+
+  public function favorite(){
+    $queryBuilder = $this->createQueryBuilder('p')
+      ->where('p.coeur = 1')
+      ->setMaxResults(4)
+      ->getQuery();
+
+    return $queryBuilder->getResult();
+  }
 }
