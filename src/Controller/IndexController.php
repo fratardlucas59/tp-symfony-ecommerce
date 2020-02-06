@@ -5,15 +5,15 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AccueilController extends AbstractController
+class IndexController extends AbstractController
 {
     /**
-     * @Route("/accueil", name="accueil")
+     * @Route("/index", name="index")
      */
     public function index()
     {
-        return $this->render('accueil/index.html.twig', [
-            'controller_name' => 'AccueilController',
+        return $this->render('index/index.html.twig', [
+            'controller_name' => 'IndexController',
         ]);
     }
 }
