@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="100b01c9-feb1-4ede-8cd9-04bda5d263a9" name="Default Changelist" comment="" />
+    <list default="true" id="100b01c9-feb1-4ede-8cd9-04bda5d263a9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index/index.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -157,7 +162,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1580987348807</updated>
-      <workItem from="1580987353535" duration="1202000" />
+      <workItem from="1580987353535" duration="3856000" />
     </task>
     <servers />
   </component>
@@ -165,6 +170,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="720" y="311" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580991338971">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="720" y="311" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1580991338971" />
     <state x="636" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1580987388710">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
