@@ -84,12 +84,10 @@
                                 <h4 class="card-title"><a href="{{ path('product_show', { slug: product.slug }) }}" title="View Product">{{ product.name }}</a></h4>
                                 <p class="card-text">{{ product.description |slice(0,50) }}...</p>
                                 <div class="row">
-                                    <div class="col">
-                                        <p class="btn btn-danger btn-block">{{ product.price / 100 }} &euro;</p>
-                                    </div>
-                                    <div class="col">
-                                        <a href="#" class="btn btn-success btn-block">Ajouter au panier</a>
-                                    </div>
+                                    <p class="btn btn-danger btn-block">{{ product.price / 100 }} &euro;</p>
+                                </div>
+                                <div class="row">
+                                    <a href="#" class="btn btn-success btn-block">Ajouter au panier</a>
                                 </div>
                             </div>
                         </div>
