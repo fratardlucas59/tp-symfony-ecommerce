@@ -2,7 +2,9 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block title %}
+            <title>Ecommerce !</title>
+        {% endblock %}
         {% block stylesheets %}
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
             <link rel="stylesheet" href="{{ asset('vendor/bootstrap-tagsinput.css') }}">
@@ -15,7 +17,7 @@
             {{ include('_navbar.html.twig') }}
         </header>
 
-        <div class="container">
+        <div>
             {% block body %}{% endblock %}
         </div>
         <footer>
