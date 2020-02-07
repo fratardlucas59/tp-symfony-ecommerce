@@ -14,7 +14,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ path('index') }}">Accueil</a></li>
                         <li class="breadcrumb-item"><a href="{{ path('category_show', { slug: product.category.slug }) }}">{{ product.category.name }}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Produit</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
                     </ol>
                 </nav>
             </div>
