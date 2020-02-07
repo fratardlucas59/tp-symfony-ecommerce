@@ -1,6 +1,7 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     encoders:
+#        Symfony\Component\Security\Core\User\User:
         App\Entity\User:
             algorithm: auto
 
@@ -9,7 +10,11 @@ security:
             entity:
                 class: App\Entity\User
                 property: username
-
+#        in_memory:
+#            memory:
+#                users:
+#                    lucas: { password: '$argon2id$v=19$m=65536,t=4,p=1$dE1FVjJ5dkFpZmRqbzFWNQ$8d6QB6maEm8bO15PfqsZQKZ78yQDy6KLFaDuRoQ1ND4', roles: [ 'ROLE_ADMIN' ] }
+#                    solidius: { password: '$argon2id$v=19$m=65536,t=4,p=1$MkU1VzFmUXMwcU0vRWJYbQ$u6fNJaDPwfKbUcquBlc1WwRnkC1i2sYeOHz2Tu76uXo', roles: [ 'ROLE_USER' ] }
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -33,7 +38,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # Pour faire un back office
-#        - { path: ^/admin, roles: ROLE_ADMIN}
+        - { path: ^/admin/product, roles: ROLE_ADMIN}
         - { path: ^/profile, roles: ROLE_USER }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
