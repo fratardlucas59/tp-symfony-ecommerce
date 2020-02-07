@@ -35,10 +35,26 @@
 
             <ul class="navbar-nav pl-3">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('login') }}">Connexion</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Inscription</a>
+                    {% if app.user %}
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ app.user.username }}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a class="dropdown-item" href="{{ path('easyadmin') }}">Administrer</a>
+                            {% endif %}
+                            <a class="dropdown-item" href="{{ path('logout') }}">Se déconnecter</a>
+                        </div>
+                    </div>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('login') }}">Connexion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Inscription</a>
+                        </li>
+                   {% endif %}
                 </li>
             </ul>
         </div>
