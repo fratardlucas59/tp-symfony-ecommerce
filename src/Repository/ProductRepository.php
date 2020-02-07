@@ -66,10 +66,5 @@ class ProductRepository extends ServiceEntityRepository
 
     return $queryBuilder->getResult();
   }
-
-  public function listColors(){
-    $colors = [];
-
-  }
   
 }

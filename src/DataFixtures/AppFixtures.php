@@ -4,6 +4,7 @@
 namespace App\DataFixtures;
 
 
+use App\Entity\Category;
 use App\Entity\Product;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -19,6 +20,17 @@ class AppFixtures extends Fixture
   public function load(ObjectManager $manager){
 
     $faker = \Faker\Factory::create('fr_FR');
+
+    // Créer les catégories
+    $plainCategories = ['Smartphone', 'TV', 'PC', 'Hi-Fi'];
+    $categories = [];
+    foreach ($plainCategories as $plainCategory) {
+      $category = new Category();
+      $category->setName($plainCategory);
+      $category->setSlug($this->slugger->slug($plainCategory)->lower());
+      $manager->persist($category);
+      $categories[] = $category;
+    }
 
     //Créer les produits
     for ($i = 1; $i <= 20; ++$i) {
@@ -38,6 +50,7 @@ class AppFixtures extends Fixture
       $product->setColor($colors);
       $product->setDate($faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now', $timezone = 'Europe/Paris'));
       $product->setPromotion(random_int(5,45));
+      $product->setCategory($categories[rand(0,3)]);
       $manager->persist($product);
     }
     $manager->flush();
