@@ -6,6 +6,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Category;
 use App\Entity\Product;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -13,8 +14,19 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AppFixtures extends Fixture
 {
-  public function __construct(SluggerInterface $slugger){
+  /**
+   * @var SluggerInterface
+   */
+  private $slugger;
+
+  /**
+   * @var UserPasswordEncoderInterface
+   */
+  private $passwordEncoder;
+
+  public function __construct(SluggerInterface $slugger, UserPasswordEncoderInterface $passwordEncoder){
     $this->slugger = $slugger;
+    $this->passwordEncoder = $passwordEncoder;
   }
 
   public function load(ObjectManager $manager){
@@ -30,6 +42,22 @@ class AppFixtures extends Fixture
       $category->setSlug($this->slugger->slug($plainCategory)->lower());
       $manager->persist($category);
       $categories[] = $category;
+    }
+
+    $users = [];
+    //Créer les utilisateurs
+    for ($i = 1; $i <= 10; $i++) {
+      $username = (1 === $i) ? 'lucas' : $faker->userName;
+      $roles = (1 === $i) ? ['ROLE_ADMIN'] : ['ROLE_USER'];
+
+      $user = new User();
+      $user->setUsername($username);
+      $user->setPassword(
+        $this->passwordEncoder->encodePassword($user, 'test')
+      );
+      $user->setRoles($roles);
+      $manager->persist($user);
+      $users[] = $user;
     }
 
     //Créer les produits
