@@ -60,6 +60,15 @@ class ProductRepository extends ServiceEntityRepository
     return $queryBuilder->getResult();
   }
 
+  public function randTop(){
+    $queryBuilder = $this->createQueryBuilder('p')
+      ->orderBy('RAND()')
+      ->setMaxResults(3)
+      ->getQuery();
+
+    return $queryBuilder->getResult();
+  }
+
   public function  allColors(){
     $queryBuilder = $this->createQueryBuilder('p')
       ->orderBy('p.color')
