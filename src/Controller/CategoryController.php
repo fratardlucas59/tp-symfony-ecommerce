@@ -20,7 +20,7 @@ class CategoryController extends AbstractController
     }
 
   /**
-   * @Route("/category/{slug}", name="category_show")
+   * @Route("/category/{slug}", name="category_show", methods={"GET"})
    */
   public function show($slug, ProductRepository $productRepository){
     $categoryRepository = $this->getDoctrine()->getRepository(Category::class);

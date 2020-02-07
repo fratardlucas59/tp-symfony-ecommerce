@@ -35,11 +35,11 @@ class ProductController extends AbstractController
   /**
    * @Route("/product/{slug}", name="product_show")
    */
-  public function show($slug){
+  public function show($slug, CategoryRepository $categoryRepository){
     $productRepository = $this->getDoctrine()->getRepository(Product::class);
 
     $product = $productRepository->findOneBySlug($slug);
-
+    $categories = $categoryRepository->categories();
     if (!$product) {
       throw $this->createNotFoundException('Le produit n\'existe pas.');
     }
