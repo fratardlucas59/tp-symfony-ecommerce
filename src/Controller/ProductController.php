@@ -19,9 +19,12 @@ class ProductController extends AbstractController
 
     $last = $productRepository->last();
 
+    $colors = $productRepository->allColors();
+
     return $this->render('product/index.html.twig', [
       'products' => $products,
-      'last' => $last
+      'last' => $last,
+      'allColors' => $colors
     ]);
   }
 

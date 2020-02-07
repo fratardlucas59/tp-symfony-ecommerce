@@ -19,7 +19,7 @@ class AppFixtures extends Fixture
   public function load(ObjectManager $manager){
 
     $faker = \Faker\Factory::create('fr_FR');
-    
+
     //Créer les produits
     for ($i = 1; $i <= 20; ++$i) {
       $colors = [];
@@ -37,6 +37,7 @@ class AppFixtures extends Fixture
       $product->setCoeur((bool) $faker->boolean(50));
       $product->setColor($colors);
       $product->setDate($faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now', $timezone = 'Europe/Paris'));
+      $product->setPromotion(random_int(5,45));
       $manager->persist($product);
     }
     $manager->flush();

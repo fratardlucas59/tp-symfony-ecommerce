@@ -58,4 +58,13 @@ class ProductRepository extends ServiceEntityRepository
 
     return $queryBuilder->getResult();
   }
+
+  public function  allColors(){
+    $queryBuilder = $this->createQueryBuilder('p')
+      ->orderBy('p.color')
+      ->getQuery();
+
+    return $queryBuilder->getResult();
+  }
+  
 }
