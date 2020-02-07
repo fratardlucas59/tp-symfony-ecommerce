@@ -53,6 +53,7 @@ class ProductRepository extends ServiceEntityRepository
   public function best(){
     $queryBuilder = $this->createQueryBuilder('p')
       ->where('p.coeur = 1')
+      ->orderBy('RAND()')
       ->setMaxResults(1)
       ->getQuery();
 
